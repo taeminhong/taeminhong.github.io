@@ -31,9 +31,17 @@
           list-style: none;
           padding-left: 0;
       }
+      .improvement::before,
+      .bug-fix::before,
       .new::before {
           display: inline-block;
           margin-right: 0.5em;
+      }
+      .improvement::before {
+          content: '\2728';
+      }
+      .bug-fix::before {
+          content: '\1F41E';
       }
       .new::before {
           content: '\1F4A1';
@@ -46,6 +54,26 @@
   <body>
     <h1>Zls Inspector Release Notes</h1>
     <div>
+      <h2>Version 0.2.0</h2>
+      October 4, 2023
+      <ul>
+        <li><span class="new topmost">Whas't New</span>
+          <ul>
+            <li>Now, we can display artworks and stitches as well.</li>
+          </ul>
+        </li>
+        <li><span class="improvement topmost">Improvement</span>
+          <ul>
+            <li>We now recognize legacy fabrics that use xtex files instead of u3m files</li>
+          </ul>
+        </li>
+        <li><span class="bug-fix topmost">Bug Fixes</span>
+          <ul>
+            <li>We don't display hidden draping items anymore.</li>
+          </ul>
+        </li>
+      </ul>
+
       <h2>Version 0.1.0</h2>
       September 30, 2023
       <ul>
