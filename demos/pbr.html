@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-91e72999.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQfnCRYDFwi26VlVAAABJUlEQVRIx+3Svy6DYRTH8c/T90FLMBBaoos7kFgtYm/cgVncgc3AZVgtYiVxBRKuARElMTSNf1F9Da3QhOR9UwmD3/JbnnOe7/mdw79+XwEMmDCUs/LJnVanQcWmFSVpro/vHdpxnSjYsiF6zkkwaUnRUVS2omnNidAdKc3gqUW7lk1HJSMaTl0p4xZTGbwu0TCsGBGk2soOUCOjtzuTFPpf5LxzF6qCiopEksmDqgvn5vsmiF1Pc2eQ/pUM4pdNo1mdg+n1VrYM9s29b7lHBZdWfzyDd4KCuprOqa6K37xuue1S1lUFbaInD2YseBU+zfzddx+ZLBh36TG6cWzdrkZO9jGjjtQTbWcGTBvMVR407NnWDF20CcWcBM/uvPS5gX/9kN4Aja1hlhVtzvsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDktMjJUMDM6MjM6MDgrMDA6MDCFRcOgAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTA5LTIyVDAzOjIzOjA4KzAwOjAw9Bh7HAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABXelRYdFJhdyBwcm9maWxlIHR5cGUgaXB0YwAAeJzj8gwIcVYoKMpPy8xJ5VIAAyMLLmMLEyMTS5MUAxMgRIA0w2QDI7NUIMvY1MjEzMQcxAfLgEigSi4A6hcRdPJCNZUAAAAASUVORK5CYII=">
+    <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQfnCRYDFwcmVkTEAAAAg0lEQVQoz7XRsQ3CUAwE0PeT31DCBAixScQAkI4NWIwuE6BIbEEFzEGTTxElBPQlqtw1tnx3tmRmR7BUW0vZ2VNTOjm6S1keLKKtVqvIJHTYFGTjeyRZ5xf+CuJk40432i6DNSKMku7HHoge9pOrh6oClaZ087ISBMWEfX91nu1FH7wBbFchkoxTeGEAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDktMjJUMDM6MjM6MDcrMDA6MDBzDbNJAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTA5LTIyVDAzOjIzOjA3KzAwOjAwAlAL9QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABXelRYdFJhdyBwcm9maWxlIHR5cGUgaXB0YwAAeJzj8gwIcVYoKMpPy8xJ5VIAAyMLLmMLEyMTS5MUAxMgRIA0w2QDI7NUIMvY1MjEzMQcxAfLgEigSi4A6hcRdPJCNZUAAAAASUVORK5CYII=">
+    <link rel="mask-icon" href="/assets/safari-pinned-tab-8d93c41f.svg" color="#5bbad5">
+    <title>Physically Based Rendering Live Demo</title>
+    <script src="/webgl-debug.js"></script>
+    
+    <script type="module" crossorigin src="/assets/pbr-a2848d98.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-3cfb730f.js">
+    <link rel="modulepreload" crossorigin href="/assets/fullscreen-quad-a49f2f71.js">
+    <link rel="modulepreload" crossorigin href="/assets/prefiltered-env-map-5383c484.js">
+    <link rel="stylesheet" href="/assets/fullscreen-quad-922c1124.css">
+  </head>
+  <body>
+    <h1>Physically Based Rendering</h1>
+    <main>
+      <canvas>This browser seems not to support canvas. :(</canvas>
+      <div class="inspector">
+        <label class="middle-in-grid-row" for="roughness">Roughness</label>
+        <input type="range" id="roughness" min="0" max="1" step="0.01" value="0">
+        <label class="middle-in-grid-row" for="metallic">Metallic</label>
+        <input type="range" id="metallic" min="0" max="1" step="0.01" value="0">
+        <label class="middle-in-grid-row" for="baseColorValue">Base color</label>
+        <input class="middle-in-grid-row" type="color" id="baseColorValue" value="#FF0000">
+      </div>
+      <h2>What is Physically Based Rendering?</h2>
+      <p>
+        Physically Based Rendering, as known as PBR, is a type of real-time rendering
+        technique that creates more realistic images than the traditional ones by
+        simulating how light interacts with the surfaces in the real world. It takes into
+        account the physical properties of objects and light such as how rough or smooth
+        the surface is, how light is reflected from different angles and etc.
+      </p>
+      <h2>What Can I Do With This Demo?</h2>
+      <p>
+        In this demo, you can see how different material properties affect the appearance
+        of a rubber duck model. You can adjust the following properties:
+      </p>
+      <ul>
+        <li>Roughness: How smooth or rough the surface appears. Lower values make the surface shiny and reflective.</li>
+        <li>Metallic: How metallic or non-metallic the material is. Set it to higher values to make the duck look like metal, and lower values to make it appear more like plastic.</li>
+        <li>Base Color: The primary color of the duck.</li>
+      </ul>
+      <h2>References</h2>
+      <ul>
+        <li><a href="https://google.github.io/filament/Materials.html" target="_blank">Filament Material Guide</li>
+        <li><a href="https://cdn2.unrealengine.com/Resources/files/2013SiggraphPresentationsNotes-26915738.pdf" target="_blank">Real Shading in Unreal Engine 4</a></li>
+      </ul>
+    </main>
+  </body>
+</html>

@@ -1,24 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=664">
+    
     
     <link rel="icon" type="image/x-icon" href="/assets/favicon-91e72999.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQfnCRYDFwi26VlVAAABJUlEQVRIx+3Svy6DYRTH8c/T90FLMBBaoos7kFgtYm/cgVncgc3AZVgtYiVxBRKuARElMTSNf1F9Da3QhOR9UwmD3/JbnnOe7/mdw79+XwEMmDCUs/LJnVanQcWmFSVpro/vHdpxnSjYsiF6zkkwaUnRUVS2omnNidAdKc3gqUW7lk1HJSMaTl0p4xZTGbwu0TCsGBGk2soOUCOjtzuTFPpf5LxzF6qCiopEksmDqgvn5vsmiF1Pc2eQ/pUM4pdNo1mdg+n1VrYM9s29b7lHBZdWfzyDd4KCuprOqa6K37xuue1S1lUFbaInD2YseBU+zfzddx+ZLBh36TG6cWzdrkZO9jGjjtQTbWcGTBvMVR407NnWDF20CcWcBM/uvPS5gX/9kN4Aja1hlhVtzvsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDktMjJUMDM6MjM6MDgrMDA6MDCFRcOgAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTA5LTIyVDAzOjIzOjA4KzAwOjAw9Bh7HAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABXelRYdFJhdyBwcm9maWxlIHR5cGUgaXB0YwAAeJzj8gwIcVYoKMpPy8xJ5VIAAyMLLmMLEyMTS5MUAxMgRIA0w2QDI7NUIMvY1MjEzMQcxAfLgEigSi4A6hcRdPJCNZUAAAAASUVORK5CYII=">
     <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQfnCRYDFwcmVkTEAAAAg0lEQVQoz7XRsQ3CUAwE0PeT31DCBAixScQAkI4NWIwuE6BIbEEFzEGTTxElBPQlqtw1tnx3tmRmR7BUW0vZ2VNTOjm6S1keLKKtVqvIJHTYFGTjeyRZ5xf+CuJk40432i6DNSKMku7HHoge9pOrh6oClaZ087ISBMWEfX91nu1FH7wBbFchkoxTeGEAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDktMjJUMDM6MjM6MDcrMDA6MDBzDbNJAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTA5LTIyVDAzOjIzOjA3KzAwOjAwAlAL9QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABXelRYdFJhdyBwcm9maWxlIHR5cGUgaXB0YwAAeJzj8gwIcVYoKMpPy8xJ5VIAAyMLLmMLEyMTS5MUAxMgRIA0w2QDI7NUIMvY1MjEzMQcxAfLgEigSi4A6hcRdPJCNZUAAAAASUVORK5CYII=">
     <link rel="mask-icon" href="/assets/safari-pinned-tab-8d93c41f.svg" color="#5bbad5">
+    <title>Depth Peeling Live Demo</title>
+    <script src="/webgl-debug.js"></script>
     
-    <title>Zls Inspector - Explore Zls Files</title>
-    <script type="module" crossorigin src="/assets/zlsinspector-6d5ec2b4.js"></script>
+    <script type="module" crossorigin src="/assets/depthPeeling-80b791be.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-3cfb730f.js">
-    <link rel="stylesheet" href="/assets/index-5b115f04.css">
+    <link rel="modulepreload" crossorigin href="/assets/fullscreen-quad-a49f2f71.js">
+    <link rel="modulepreload" crossorigin href="/assets/prefiltered-env-map-5383c484.js">
+    <link rel="modulepreload" crossorigin href="/assets/gltf-loader-b8d52967.js">
+    <link rel="stylesheet" href="/assets/fullscreen-quad-922c1124.css">
+    <link rel="stylesheet" href="/assets/depth-peeling-3f88af5b.css">
   </head>
   <body>
-    <main id="root">
+    <h1>Depth Peeling</h1>
+    <main>
+      <div class="comparision-label">
+        <div>Depth Peeling: <strong>Off</strong></div>
+        <div>Depth Peeling: <strong>On</strong></div>
+      </div>
+      <canvas>This browser seems not to support canvas. :(</canvas>
+      <h2>What is Depth Peeling?</h2>
+      <p>
+        Depth Peeling is a method used to render multiple layers of
+        transparency. Unlike simple alpha blending, depth peeling ensures that
+        the overlapping transparent surfaces are accurately visualized and
+        rendered in any order.
+      </p>
+      <ul>
+        <li>Left: Displays the object using traditional transparency techniques.</li>
+        <li>Right: Displays the object using depth peeling.</li>
+      </ul>
+      <p>
+        You can change the view angles by mouse dragging and zoom in and out with mouse wheel.
+      </p>
+      <h2>References</h2>
+      <ul>
+        <li>
+          <a href="https://developer.download.nvidia.com/assets/gamedev/docs/OrderIndependentTransparency.pdf" target="_blank">
+            Order-Independent Transparency
+          </a>
+        </li>
+        <li>
+          <a href="https://developer.download.nvidia.com/SDK/10/opengl/src/dual_depth_peeling/doc/DualDepthPeeling.pdf" target="_blank">
+            Order Independent Transparency With Dual Depth Peeling
+          </a>
+        </li>
+      </ul>
     </main>
-    <footer>
-      <p><a href="https://github.com/taeminhong/taeminhong.github.io/issues">Help & feedback</a> | <a href="release-notes.html">ver 0.2.2</a></p>
-    </footer>
   </body>
 </html>
