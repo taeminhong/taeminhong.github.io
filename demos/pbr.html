@@ -11,10 +11,10 @@
     <title>Physically Based Rendering Live Demo</title>
     <script src="/webgl-debug.js"></script>
     
-    <script type="module" crossorigin src="/assets/pbr-b8d8de5f.js"></script>
+    <script type="module" crossorigin src="/assets/pbr-675ab41f.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-3cfb730f.js">
-    <link rel="modulepreload" crossorigin href="/assets/fullscreen-quad-e8458005.js">
-    <link rel="modulepreload" crossorigin href="/assets/prefiltered-env-map-5a5ec4cf.js">
+    <link rel="modulepreload" crossorigin href="/assets/fullscreen-quad-8f42921c.js">
+    <link rel="modulepreload" crossorigin href="/assets/prefiltered-env-map-20191d79.js">
     <link rel="stylesheet" href="/assets/demo-922c1124.css">
   </head>
   <body>
@@ -22,12 +22,16 @@
     <main>
       <canvas>This browser seems not to support canvas. :(</canvas>
       <div class="inspector">
-        <label class="middle-in-grid-row" for="roughness">Roughness</label>
-        <input type="range" id="roughness" min="0" max="1" step="0.01" value="0">
-        <label class="middle-in-grid-row" for="metallic">Metallic</label>
-        <input type="range" id="metallic" min="0" max="1" step="0.01" value="0">
         <label class="middle-in-grid-row" for="baseColorValue">Base color</label>
         <input class="middle-in-grid-row" type="color" id="baseColorValue" value="#FF0000">
+        <label class="middle-in-grid-row" for="roughness">Roughness</label>
+        <input type="range" id="roughness" min="0" max="1" step="0.01" value="0.5">
+        <label class="middle-in-grid-row" for="metallic">Metallic</label>
+        <input type="range" id="metallic" min="0" max="1" step="0.01" value="1">
+        <label class="middle-in-grid-row" for="clearCoat">Clear Coat</label>
+        <input type="range" id="clearCoat" min="0" max="1" step="0.01" value="1">
+        <label class="middle-in-grid-row" for="clearCoatIOR">Clear Coat IOR</label>
+        <input type="range" id="clearCoatIOR" min="1.2" max="2.0" step="0.01" value="1.5">
       </div>
       <h2>What is Physically Based Rendering?</h2>
       <p>
@@ -40,12 +44,14 @@
       <h2>What Can I Do With This Demo?</h2>
       <p>
         In this demo, you can see how different material properties affect the appearance
-        of a rubber duck model. You can adjust the following properties:
+        of the rubber duck model. You can adjust the following properties:
       </p>
       <ul>
+        <li>Base Color: The primary color of the duck.</li>
         <li>Roughness: How smooth or rough the surface appears. Lower values make the surface shiny and reflective.</li>
         <li>Metallic: How metallic or non-metallic the material is. Set it to higher values to make the duck look like metal, and lower values to make it appear more like plastic.</li>
-        <li>Base Color: The primary color of the duck.</li>
+        <li>Clear Coat: A thin translucent layer over the material, such as car paints or lacquered wood. Set it to higher values to make the duck glossy.</li>
+        <li>Clear Coat IOR: The degree of bend of a light ray when it passes through the clear coat</li>
       </ul>
       <h2>References</h2>
       <ul>
