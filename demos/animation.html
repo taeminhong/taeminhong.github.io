@@ -4,26 +4,39 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="utf-8">
     
+    
     <link rel="icon" type="image/x-icon" href="/assets/favicon-91e72999.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQfnCRYDFwi26VlVAAABJUlEQVRIx+3Svy6DYRTH8c/T90FLMBBaoos7kFgtYm/cgVncgc3AZVgtYiVxBRKuARElMTSNf1F9Da3QhOR9UwmD3/JbnnOe7/mdw79+XwEMmDCUs/LJnVanQcWmFSVpro/vHdpxnSjYsiF6zkkwaUnRUVS2omnNidAdKc3gqUW7lk1HJSMaTl0p4xZTGbwu0TCsGBGk2soOUCOjtzuTFPpf5LxzF6qCiopEksmDqgvn5vsmiF1Pc2eQ/pUM4pdNo1mdg+n1VrYM9s29b7lHBZdWfzyDd4KCuprOqa6K37xuue1S1lUFbaInD2YseBU+zfzddx+ZLBh36TG6cWzdrkZO9jGjjtQTbWcGTBvMVR407NnWDF20CcWcBM/uvPS5gX/9kN4Aja1hlhVtzvsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDktMjJUMDM6MjM6MDgrMDA6MDCFRcOgAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTA5LTIyVDAzOjIzOjA4KzAwOjAw9Bh7HAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABXelRYdFJhdyBwcm9maWxlIHR5cGUgaXB0YwAAeJzj8gwIcVYoKMpPy8xJ5VIAAyMLLmMLEyMTS5MUAxMgRIA0w2QDI7NUIMvY1MjEzMQcxAfLgEigSi4A6hcRdPJCNZUAAAAASUVORK5CYII=">
     <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQfnCRYDFwcmVkTEAAAAg0lEQVQoz7XRsQ3CUAwE0PeT31DCBAixScQAkI4NWIwuE6BIbEEFzEGTTxElBPQlqtw1tnx3tmRmR7BUW0vZ2VNTOjm6S1keLKKtVqvIJHTYFGTjeyRZ5xf+CuJk40432i6DNSKMku7HHoge9pOrh6oClaZ087ISBMWEfX91nu1FH7wBbFchkoxTeGEAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDktMjJUMDM6MjM6MDcrMDA6MDBzDbNJAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTA5LTIyVDAzOjIzOjA3KzAwOjAwAlAL9QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABXelRYdFJhdyBwcm9maWxlIHR5cGUgaXB0YwAAeJzj8gwIcVYoKMpPy8xJ5VIAAyMLLmMLEyMTS5MUAxMgRIA0w2QDI7NUIMvY1MjEzMQcxAfLgEigSi4A6hcRdPJCNZUAAAAASUVORK5CYII=">
     <link rel="mask-icon" href="/assets/safari-pinned-tab-8d93c41f.svg" color="#5bbad5">
-    <title>Ocean Rendering Live Demo</title>
+    <title>Skeletal Animation Demo</title>
     <script src="/webgl-debug.js"></script>
     
-    <script type="module" crossorigin src="/assets/ocean-6b22acdc.js"></script>
+    <script type="module" crossorigin src="/assets/animation-da98a1cc.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-3cfb730f.js">
     <link rel="modulepreload" crossorigin href="/assets/fullscreen-quad-cddcd807.js">
+    <link rel="modulepreload" crossorigin href="/assets/prefiltered-env-map-946f44e6.js">
+    <link rel="modulepreload" crossorigin href="/assets/pbr-forward-depth-peel-d5c5426d.js">
+    <link rel="stylesheet" href="/assets/animation-c6305b6f.css">
     <link rel="stylesheet" href="/assets/demo-922c1124.css">
   </head>
   <body>
-    <h1>Ocean</h1>
+    <h1>Skeletal Animation</h1>
     <main>
       <canvas>This browser seems not to support canvas. :(</canvas>
-      <div class="inspector">
-        <label class="middle-in-grid-row" for="waveHeight">Wave Height</label>
-        <input class="material-property" type="range" id="waveHeight" min="0.5" max="1.5" step="0.01">
-      </div>
+      <div class="animation-controller"></div>
+      <h2>References</h2>
+      <ul>
+        <li>
+          <a href="https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#reference-animation" target="_blank">
+            glTF 2.0 Animation Specification
+          </a>
+        </li>
+      </ul>
+      <h2>Model Information</h2>
+      <p>
+        This work is based on <a href="https://sketchfab.com/3d-models/zombie-hazmat-49b3b4307f6a4d2386fdb02354158d04" target="_blank">"Zombie Hazmat"</a> by <a href="https://sketchfab.com/LxNazarov" target="_blank">LxNazarov</a> licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY-4.0</a>.
+      </p>
     </main>
   </body>
 </html>

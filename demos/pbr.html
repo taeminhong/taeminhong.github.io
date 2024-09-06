@@ -11,10 +11,11 @@
     <title>Physically Based Rendering Live Demo</title>
     <script src="/webgl-debug.js"></script>
     
-    <script type="module" crossorigin src="/assets/pbr-675ab41f.js"></script>
+    <script type="module" crossorigin src="/assets/pbr-8fc595d7.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-3cfb730f.js">
-    <link rel="modulepreload" crossorigin href="/assets/fullscreen-quad-8f42921c.js">
-    <link rel="modulepreload" crossorigin href="/assets/prefiltered-env-map-20191d79.js">
+    <link rel="modulepreload" crossorigin href="/assets/fullscreen-quad-cddcd807.js">
+    <link rel="modulepreload" crossorigin href="/assets/prefiltered-env-map-946f44e6.js">
+    <link rel="modulepreload" crossorigin href="/assets/pbr-forward-8429c5c5.js">
     <link rel="stylesheet" href="/assets/demo-922c1124.css">
   </head>
   <body>
@@ -24,10 +25,10 @@
       <div class="inspector">
         <label class="middle-in-grid-row" for="baseColorValue">Base color</label>
         <input class="middle-in-grid-row" type="color" id="baseColorValue" value="#FF0000">
-        <label class="middle-in-grid-row" for="roughness">Roughness</label>
-        <input type="range" id="roughness" min="0" max="1" step="0.01" value="0.5">
-        <label class="middle-in-grid-row" for="metallic">Metallic</label>
-        <input type="range" id="metallic" min="0" max="1" step="0.01" value="1">
+        <label class="middle-in-grid-row" for="roughnessFactor">Roughness</label>
+        <input type="range" id="roughnessFactor" min="0" max="1" step="0.01" value="0.5">
+        <label class="middle-in-grid-row" for="metallicFactor">Metallic</label>
+        <input type="range" id="metallicFactor" min="0" max="1" step="0.01" value="1">
         <label class="middle-in-grid-row" for="clearCoat">Clear Coat</label>
         <input type="range" id="clearCoat" min="0" max="1" step="0.01" value="1">
         <label class="middle-in-grid-row" for="clearCoatIOR">Clear Coat IOR</label>

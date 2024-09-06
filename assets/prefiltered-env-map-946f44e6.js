@@ -1,4 +1,4 @@
-var F=Object.defineProperty;var M=(e,n,t)=>n in e?F(e,n,{enumerable:!0,configurable:!0,writable:!0,value:t}):e[n]=t;var i=(e,n,t)=>(M(e,typeof n!="symbol"?n+"":n,t),t);import{E as p,H as u,J as N,K as I,w as R,L as V,b as h,u as x,G as C,F as O}from"./fullscreen-quad-8f42921c.js";function E(){return[p(u(),u(),Math.PI/2),p(u(),u(),-Math.PI/2),N(u(),u(),-Math.PI/2),N(u(),u(),Math.PI/2),u(),p(u(),u(),Math.PI)].map(e=>{const n=I(R(),e);return V(n,n,[1,-1]),n})}function H(e,n,t,l,f){const s=new h(e,e.TEXTURE_CUBE_MAP,1,e.RGBA16F,n,n);return s.bind(e).parameteri(e.TEXTURE_MIN_FILTER,e.LINEAR).parameteri(e.TEXTURE_MAG_FILTER,e.LINEAR),x(f,e,c=>{c.drawBuffers(e.COLOR_ATTACHMENT0).texture2D(e.DEPTH_STENCIL_ATTACHMENT,e.TEXTURE_2D,null,0);const r=E();for(let o=0;o<6;++o){c.texture2D(e.COLOR_ATTACHMENT0,e.TEXTURE_CUBE_MAP_POSITIVE_X+o,s,0),e.clear(e.COLOR_BUFFER_BIT),e.viewport(0,0,n,n);const m={texMat:r[o]};t.setUniformValues(m),t.use(e),l.draw(e,0)}}),s}function L(e,n,t,l,f,s){n=Math.max(1,n),t=Math.max(0,t);const c=n+1+t,r=1<<c-1,o=new h(e,e.TEXTURE_CUBE_MAP,c,e.RGBA16F,r,r);return o.bind(e).parameteri(e.TEXTURE_MIN_FILTER,e.LINEAR_MIPMAP_LINEAR).parameteri(e.TEXTURE_MAG_FILTER,e.LINEAR).generateMipmap(),x(s,e,m=>{m.drawBuffers(e.COLOR_ATTACHMENT0).texture2D(e.DEPTH_STENCIL_ATTACHMENT,e.TEXTURE_2D,null,0).texture2D(e.COLOR_ATTACHMENT0,e.TEXTURE_CUBE_MAP_POSITIVE_X,o,n).checkStatus(a=>{if(a!=e.FRAMEBUFFER_COMPLETE)throw new C(e,a||e.getError())});const _=E();for(let a=0;a<=n;++a){const v=a/n,d=r/(1<<a);for(let T=0;T<6;++T){m.texture2D(e.COLOR_ATTACHMENT0,e.TEXTURE_CUBE_MAP_POSITIVE_X+T,o,a),e.viewport(0,0,d,d);const A={roughness:v,texMat:_[T]};l.setUniformValues(A),l.use(e),f.draw(e,0)}}}),o}function b(e,n,t=0){return e.filter((l,f)=>(f-t)%n===0)}class S{constructor(n,t,l){i(this,"gl");i(this,"framebufferBinder");i(this,"renderTexture");i(this,"colorAttachments");i(this,"depthAttachment");const f=t.framebuffer,s=t.colorAttachments,c=t.depthAttachment,r=f.bind(n);for(let o=0;o<s.length;++o)r.texture2D(n.COLOR_ATTACHMENT0+o,l,s[o],0);c&&r.texture2D(n.DEPTH_ATTACHMENT,l,c,0),this.gl=n,this.framebufferBinder=r,this.renderTexture=t,this.colorAttachments=s,this.depthAttachment=c}setTarget(n){this.depthAttachment&&this.framebufferBinder.texture2D(this.gl.DEPTH_ATTACHMENT,n,this.depthAttachment,0);for(let t=0;t<this.colorAttachments.length;++t)this.framebufferBinder.texture2D(this.gl.COLOR_ATTACHMENT0+t,n,this.colorAttachments[t],0)}unbind(){this.framebufferBinder.unbind(),this.renderTexture.swapTextures()}}class w{constructor(n,t){i(this,"framebuffer");i(this,"colorAttachments");i(this,"colorTextures");i(this,"depthAttachment");i(this,"depthTexture");i(this,"width");i(this,"height");i(this,"cube");const l=t.width,f=t.height,s=t.cube?n.TEXTURE_CUBE_MAP:n.TEXTURE_2D,c=[t.colorInternalFormat0,t.colorInternalFormat1].filter(a=>typeof a=="number"&&a!==n.NONE),r=[];for(let a=0;a<c.length*2;++a){const v=c[Math.floor(a/2)],d=new h(n,s,1,v,l,f);d.bind(n).parameteri(n.TEXTURE_MIN_FILTER,n.LINEAR).parameteri(n.TEXTURE_MAG_FILTER,n.LINEAR).parameteri(n.TEXTURE_WRAP_S,n.CLAMP_TO_EDGE).parameteri(n.TEXTURE_WRAP_T,n.CLAMP_TO_EDGE),r.push(d)}const o=[];t.depthInternalFormat&&(o.push(new h(n,s,1,t.depthInternalFormat,l,f)),o.push(new h(n,s,1,t.depthInternalFormat,l,f)));for(const a of o)a.bind(n).parameteri(n.TEXTURE_MIN_FILTER,n.NEAREST).parameteri(n.TEXTURE_MAG_FILTER,n.NEAREST).parameteri(n.TEXTURE_WRAP_S,n.CLAMP_TO_EDGE).parameteri(n.TEXTURE_WRAP_T,n.CLAMP_TO_EDGE);const m=new O(n,n.FRAMEBUFFER),_=t.cube?n.TEXTURE_CUBE_MAP_POSITIVE_X:n.TEXTURE_2D;x(m,n,a=>{for(let v=0;v<c.length;++v)a.texture2D(n.COLOR_ATTACHMENT0+v,_,r[v*2],0);o.length&&a.texture2D(n.DEPTH_ATTACHMENT,_,o[0],0),a.checkStatus(v=>{if(v!=n.FRAMEBUFFER_COMPLETE)throw new C(n,v||n.getError())})}),this.framebuffer=m,this.colorAttachments=b(r,2,0),this.colorTextures=b(r,2,1),this.width=l,this.height=f,this.cube=t.cube,o.length&&(this.depthAttachment=o[0],this.depthTexture=o[1])}get colorTexture(){return this.colorTextures[0]}swapTextures(){for(let n=0;n<this.colorAttachments.length;++n)this.colorAttachments[n].swap(this.colorTextures[n]);this.depthAttachment&&this.depthAttachment.swap(this.depthTexture)}bind(n){return new S(n,this,this.defaultTarget(n))}defaultTarget(n){return this.cube?n.TEXTURE_CUBE_MAP_POSITIVE_X:n.TEXTURE_2D}}var X=`#version 300 es
+var A=Object.defineProperty;var M=(e,n,t)=>n in e?A(e,n,{enumerable:!0,configurable:!0,writable:!0,value:t}):e[n]=t;var i=(e,n,t)=>(M(e,typeof n!="symbol"?n+"":n,t),t);import{U as p,z as m,W as b,X as R,t as I,w as g,b as d,u as x,G as N,F as V}from"./fullscreen-quad-cddcd807.js";function E(){return[p(m(),m(),Math.PI/2),p(m(),m(),-Math.PI/2),b(m(),m(),-Math.PI/2),b(m(),m(),Math.PI/2),m(),p(m(),m(),Math.PI)].map(e=>{const n=R(I(),e);return g(n,n,[1,-1]),n})}function P(e,n,t,l,f){const s=new d(e,e.TEXTURE_CUBE_MAP,1,e.RGBA16F,n,n);return s.bind(e).parameteri(e.TEXTURE_MIN_FILTER,e.LINEAR).parameteri(e.TEXTURE_MAG_FILTER,e.LINEAR),x(f,e,c=>{c.drawBuffers(e.COLOR_ATTACHMENT0).texture2D(e.DEPTH_STENCIL_ATTACHMENT,e.TEXTURE_2D,null,0);const r=E();for(let o=0;o<6;++o){c.texture2D(e.COLOR_ATTACHMENT0,e.TEXTURE_CUBE_MAP_POSITIVE_X+o,s,0),e.clear(e.COLOR_BUFFER_BIT),e.viewport(0,0,n,n);const v={texMat:r[o]};t.setUniformValues(v),t.use(e),l.draw(e,0)}}),s}function w(e,n,t,l,f,s){n=Math.max(1,n),t=Math.max(0,t);const c=n+1+t,r=1<<c-1,o=new d(e,e.TEXTURE_CUBE_MAP,c,e.RGBA16F,r,r);return o.bind(e).parameteri(e.TEXTURE_MIN_FILTER,e.LINEAR_MIPMAP_LINEAR).parameteri(e.TEXTURE_MAG_FILTER,e.LINEAR).generateMipmap(),x(s,e,v=>{v.drawBuffers(e.COLOR_ATTACHMENT0).texture2D(e.DEPTH_STENCIL_ATTACHMENT,e.TEXTURE_2D,null,0).texture2D(e.COLOR_ATTACHMENT0,e.TEXTURE_CUBE_MAP_POSITIVE_X,o,n).checkStatus(a=>{if(a!=e.FRAMEBUFFER_COMPLETE)throw new N(a||e.getError())});const _=E();for(let a=0;a<=n;++a){const u=a/n,h=r/(1<<a);for(let T=0;T<6;++T){v.texture2D(e.COLOR_ATTACHMENT0,e.TEXTURE_CUBE_MAP_POSITIVE_X+T,o,a),e.viewport(0,0,h,h);const F={roughness:u,texMat:_[T]};l.setUniformValues(F),l.use(e),f.draw(e,0)}}}),o}function C(e,n,t=0){return e.filter((l,f)=>(f-t)%n===0)}class S{constructor(n,t,l){i(this,"gl");i(this,"framebufferBinder");i(this,"renderTexture");i(this,"colorAttachments");i(this,"depthAttachment");const f=t.framebuffer,s=t.colorAttachments,c=t.depthAttachment,r=f.bind(n);for(let o=0;o<s.length;++o)r.texture2D(n.COLOR_ATTACHMENT0+o,l,s[o],0);c&&r.texture2D(n.DEPTH_ATTACHMENT,l,c,0),this.gl=n,this.framebufferBinder=r,this.renderTexture=t,this.colorAttachments=s,this.depthAttachment=c}setTarget(n){this.depthAttachment&&this.framebufferBinder.texture2D(this.gl.DEPTH_ATTACHMENT,n,this.depthAttachment,0);for(let t=0;t<this.colorAttachments.length;++t)this.framebufferBinder.texture2D(this.gl.COLOR_ATTACHMENT0+t,n,this.colorAttachments[t],0)}unbind(){this.framebufferBinder.unbind(),this.renderTexture.swapTextures()}}class O{constructor(n,t){i(this,"framebuffer");i(this,"colorAttachments");i(this,"colorTextures");i(this,"depthAttachment");i(this,"depthTexture");i(this,"width");i(this,"height");i(this,"cube");const l=t.width,f=t.height,s=t.cube?n.TEXTURE_CUBE_MAP:n.TEXTURE_2D,c=[t.colorInternalFormat0,t.colorInternalFormat1].filter(a=>typeof a=="number"&&a!==n.NONE),r=[];for(let a=0;a<c.length*2;++a){const u=c[Math.floor(a/2)],h=new d(n,s,1,u,l,f);h.bind(n).parameteri(n.TEXTURE_MIN_FILTER,n.LINEAR).parameteri(n.TEXTURE_MAG_FILTER,n.LINEAR).parameteri(n.TEXTURE_WRAP_S,n.CLAMP_TO_EDGE).parameteri(n.TEXTURE_WRAP_T,n.CLAMP_TO_EDGE),r.push(h)}const o=[];t.depthInternalFormat&&(o.push(new d(n,s,1,t.depthInternalFormat,l,f)),o.push(new d(n,s,1,t.depthInternalFormat,l,f)));for(const a of o)a.bind(n).parameteri(n.TEXTURE_MIN_FILTER,n.NEAREST).parameteri(n.TEXTURE_MAG_FILTER,n.NEAREST).parameteri(n.TEXTURE_WRAP_S,n.CLAMP_TO_EDGE).parameteri(n.TEXTURE_WRAP_T,n.CLAMP_TO_EDGE);const v=new V(n,n.FRAMEBUFFER),_=t.cube?n.TEXTURE_CUBE_MAP_POSITIVE_X:n.TEXTURE_2D;x(v,n,a=>{for(let u=0;u<c.length;++u)a.texture2D(n.COLOR_ATTACHMENT0+u,_,r[u*2],0);o.length&&a.texture2D(n.DEPTH_ATTACHMENT,_,o[0],0),a.checkStatus(u=>{if(u!=n.FRAMEBUFFER_COMPLETE)throw new N(u||n.getError())})}),this.framebuffer=v,this.colorAttachments=C(r,2,0),this.colorTextures=C(r,2,1),this.width=l,this.height=f,this.cube=t.cube,o.length&&(this.depthAttachment=o[0],this.depthTexture=o[1])}get colorTexture(){return this.colorTextures[0]}swapTextures(){for(let n=0;n<this.colorAttachments.length;++n)this.colorAttachments[n].swap(this.colorTextures[n]);this.depthAttachment&&this.depthAttachment.swap(this.depthTexture)}bind(n){return new S(n,this,this.defaultTarget(n))}defaultTarget(n){return this.cube?n.TEXTURE_CUBE_MAP_POSITIVE_X:n.TEXTURE_2D}}var y=`#version 300 es
 
 precision highp float;
 
@@ -185,7 +185,7 @@ void main()
     }
     v_color = vec4(v_texCoord, 1, 1);
     v_color = vec4(A, B, 0, 1) / float(numSamples);
-}`,y=`#version 300 es
+}`,X=`#version 300 es
 
 precision highp float;
 
@@ -204,29 +204,6 @@ void main()
     f_color.rgb = color;
     f_color.a = 1.0;
 }`,B=`#version 300 es
-
-in vec4 POSITION;
-in vec2 TEXCOORD_0;
-in vec3 NORMAL;
-
-out vec3 v_position;
-out vec2 v_texCoord;
-out vec3 v_normal;
-
-uniform mat4 model;
-uniform mat4 view;
-uniform mat4 proj;
-uniform mat3 inverseTranspose;
-
-void main()
-{
-    mat4 mv = view * model;
-    mat4 mvp = proj * mv;
-    v_texCoord = TEXCOORD_0;
-    v_normal = mat3(view) * inverseTranspose * NORMAL;
-    v_position = (mv * POSITION).xyz;
-    gl_Position = mvp * POSITION;
-}`,U=`#version 300 es
 
 precision highp float;
 
@@ -338,9 +315,13 @@ uniform sampler2D baseColorMap;
 uniform vec4 baseColorValue;
 uniform bool flipNormalGreen;
 uniform bool flipNormal;
+uniform bool flatShading;
 uniform float normalMapStrength;
-uniform float metallic;
-uniform float roughness;
+uniform float metallicFactor;
+uniform float roughnessFactor;
+uniform float occlusionFactor;
+uniform sampler2D metallicRoughnessMap;
+uniform sampler2D occlusionMap;
 uniform samplerCube prefilteredEnvMap;
 uniform samplerCube irradianceEnvMap;
 uniform sampler2D brdfLutMap;
@@ -350,6 +331,7 @@ uniform float clearCoat;
 uniform float clearCoatRoughness;
 uniform float clearCoatNormalMapStrength;
 uniform float clearCoatIOR;
+uniform float alphaCutoff;
 
 mat3 cotangentFrame(vec3 normal, vec3 pos, vec2 uv)
 {
@@ -382,29 +364,42 @@ void evalClearCoat(vec3 view, vec3 normal, float roughness, float f0, inout vec3
 
 void main()
 {
-    vec3 vertexNormal = normalize(v_normal);
-    mat3 TBN = cotangentFrame(vertexNormal, v_position, v_texCoord);
-    vec3 rgbNormal = normalize(texture(normalMap, v_texCoord).rgb * 2.0 - 1.0);
-    if (flipNormalGreen)
-        rgbNormal.g = -rgbNormal.g;
-    vec3 perturbedNormal = TBN * rgbNormal;
+    vec3 normal;
+    vec3 clearCoatNormal;
 
-    vec3 normal = normalize(mix(vertexNormal, perturbedNormal, normalMapStrength));
-    vec3 clearCoatNormal = normalize(mix(vertexNormal, perturbedNormal, clearCoatNormalMapStrength));
+    if (flatShading) {
+        vec3 dx = dFdx(v_position);
+        vec3 dy = dFdy(v_position);
+        normal = normalize(cross(dx, dy));
+        clearCoatNormal = normal;
+    } else {
+        normal = normalize(v_normal);
+        mat3 TBN = cotangentFrame(normal, v_position, v_texCoord);
+        vec3 rgbNormal = normalize(texture(normalMap, v_texCoord).rgb * 2.0 - 1.0);
+        if (flipNormalGreen)
+            rgbNormal.g = -rgbNormal.g;
+        vec3 perturbedNormal = TBN * rgbNormal;
+        normal = normalize(mix(normal, perturbedNormal, normalMapStrength));
+        clearCoatNormal = normalize(mix(normal, perturbedNormal, clearCoatNormalMapStrength));
+    }
+
     if (flipNormal) {
         normal = -normal;
         clearCoatNormal = -clearCoatNormal;
     }
-    vec4 baseColor = texture(baseColorMap, v_texCoord) * baseColorValue;
-    float r = max(0.01, roughness);
 
-    float occlusion = 1.0;
+    vec4 baseColor = texture(baseColorMap, v_texCoord) * baseColorValue;
+    vec2 metallicRoughness = texture(metallicRoughnessMap, v_texCoord).bg;
+    float metallic = metallicFactor * metallicRoughness.x;
+    float roughness = max(0.01, roughnessFactor * metallicRoughness.y);
+
+    float occlusion = saturate(1.0 - occlusionFactor * (1.0 - texture(occlusionMap, v_texCoord).r));
     vec3 position = v_position;
     vec3 view = -normalize(position);
     float NoV = saturate(dot(normal, view));
-    vec2 dfg = texture(brdfLutMap, vec2(NoV, r)).rg;
+    vec2 dfg = texture(brdfLutMap, vec2(NoV, roughness)).rg;
     vec3 light = (inverseView * vec4(reflect(-view, normal), 0)).xyz;
-    float lod = r * maxLevel;
+    float lod = roughness * maxLevel;
     vec3 sampledColor = textureLod(prefilteredEnvMap, light, lod).rgb;
     vec3 f0 = F0(baseColor.rgb, metallic);
 
@@ -413,23 +408,32 @@ void main()
 
     vec3 Fs = sampledColor * (f0 * dfg.x + vec3(dfg.y));
     vec3 Fd = diffuseColor(baseColor.rgb, metallic) * diffuseIrradiance;
-    vec3 Kd = clamp(1.0 - FresnelSchlickRoughness(f0, NoV, r), 0.8, 1.0);
+    vec3 Kd = clamp(1.0 - FresnelSchlickRoughness(f0, NoV, roughness), 0.8, 1.0);
+
     evalClearCoat(view, clearCoatNormal, clearCoatRoughness, F0(max(1.0, clearCoatIOR)), Fd, Fs);
+
+    if (baseColor.a < alphaCutoff)
+        discard;
+
     f_color.rgb = (Fs + Fd * Kd) * occlusion;
     f_color.a = baseColor.a;
-}`,D=`#version 300 es
+}`,U=`#version 300 es
 
 in vec4 POSITION;
 
 out vec3 v_texCoord;
 
 uniform mat4 inverseViewProj;
+uniform vec3 offset;
 
 void main() {
-    vec4 posInWorld = inverseViewProj * POSITION;
+    vec4 pos = POSITION;
+    pos.xyz += offset;
+
+    vec4 posInWorld = inverseViewProj * pos;
     v_texCoord = (posInWorld / posInWorld.w).xyz;
-    gl_Position = POSITION;
-}`,G=`#version 300 es
+    gl_Position = pos;
+}`,D=`#version 300 es
 
 precision highp float;
 
@@ -441,7 +445,7 @@ uniform samplerCube skybox;
 
 void main() {
     f_color = texture(skybox, v_texCoord);
-}`,k=`#version 300 es
+}`,G=`#version 300 es
 
 in vec2 POSITION;
 
@@ -457,7 +461,7 @@ void main()
     v_tangent = texMat * vec3(1, 0, 0);
     v_texCoord = POSITION.xy * 0.5 + 0.5;
     gl_Position = vec4(POSITION, 0, 1);
-}`,z=`#version 300 es
+}`,k=`#version 300 es
 
 precision highp float;
 
@@ -524,7 +528,7 @@ void main()
     float baseAngle = length(v_texCoord) * 12.0;
     f_color.rgb = irradiance(stacks, slices, TBN, envMap, baseAngle);
     f_color.a = 1.0;
-}`,q=`#version 300 es
+}`,z=`#version 300 es
 
 in vec2 POSITION;
 
@@ -538,7 +542,7 @@ void main()
     v_normal = texMat * vec3(POSITION, 1);
     v_tangent = texMat * vec3(1, 0, 0);
     gl_Position = vec4(POSITION.xy, 0, 1);
-}`,W=`#version 300 es
+}`,q=`#version 300 es
 
 precision highp float;
 
@@ -630,4 +634,4 @@ void main()
     }
     f_color.rgb = prefilteredColor / totalWeights;
     f_color.a = 0.0;
-}`;export{w as R,G as a,U as b,k as c,z as d,y as e,H as f,q as g,W as h,X as i,L as j,B as p,D as s};
+}`;export{O as R,D as a,G as b,k as c,P as d,X as e,z as f,q as g,w as h,y as i,B as p,U as s};
