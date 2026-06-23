@@ -11,54 +11,59 @@
     <title>Physically Based Rendering Live Demo</title>
     <script src="/webgl-debug.js"></script>
     
-    <script type="module" crossorigin src="/assets/pbr-8fc595d7.js"></script>
+    <script type="module" crossorigin src="/assets/pbr-35765a51.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-3cfb730f.js">
     <link rel="modulepreload" crossorigin href="/assets/fullscreen-quad-cddcd807.js">
     <link rel="modulepreload" crossorigin href="/assets/prefiltered-env-map-946f44e6.js">
     <link rel="modulepreload" crossorigin href="/assets/pbr-forward-8429c5c5.js">
-    <link rel="stylesheet" href="/assets/demo-922c1124.css">
+    <link rel="stylesheet" href="/assets/demo-0d4198f6.css">
   </head>
   <body>
-    <h1>Physically Based Rendering</h1>
-    <main>
-      <canvas>This browser seems not to support canvas. :(</canvas>
-      <div class="inspector">
-        <label class="middle-in-grid-row" for="baseColorValue">Base color</label>
-        <input class="middle-in-grid-row" type="color" id="baseColorValue" value="#FF0000">
-        <label class="middle-in-grid-row" for="roughnessFactor">Roughness</label>
-        <input type="range" id="roughnessFactor" min="0" max="1" step="0.01" value="0.5">
-        <label class="middle-in-grid-row" for="metallicFactor">Metallic</label>
-        <input type="range" id="metallicFactor" min="0" max="1" step="0.01" value="1">
-        <label class="middle-in-grid-row" for="clearCoat">Clear Coat</label>
-        <input type="range" id="clearCoat" min="0" max="1" step="0.01" value="1">
-        <label class="middle-in-grid-row" for="clearCoatIOR">Clear Coat IOR</label>
-        <input type="range" id="clearCoatIOR" min="1.2" max="2.0" step="0.01" value="1.5">
-      </div>
-      <h2>What is Physically Based Rendering?</h2>
-      <p>
-        Physically Based Rendering, as known as PBR, is a type of real-time rendering
-        technique that creates more realistic images than the traditional ones by
-        simulating how light interacts with the surfaces in the real world. It takes into
-        account the physical properties of objects and light such as how rough or smooth
-        the surface is, how light is reflected from different angles and etc.
-      </p>
-      <h2>What Can I Do With This Demo?</h2>
-      <p>
-        In this demo, you can see how different material properties affect the appearance
-        of the rubber duck model. You can adjust the following properties:
-      </p>
-      <ul>
-        <li>Base Color: The primary color of the duck.</li>
-        <li>Roughness: How smooth or rough the surface appears. Lower values make the surface shiny and reflective.</li>
-        <li>Metallic: How metallic or non-metallic the material is. Set it to higher values to make the duck look like metal, and lower values to make it appear more like plastic.</li>
-        <li>Clear Coat: A thin translucent layer over the material, such as car paints or lacquered wood. Set it to higher values to make the duck glossy.</li>
-        <li>Clear Coat IOR: The degree of bend of a light ray when it passes through the clear coat</li>
-      </ul>
-      <h2>References</h2>
-      <ul>
-        <li><a href="https://google.github.io/filament/Materials.html" target="_blank">Filament Material Guide</li>
-        <li><a href="https://cdn2.unrealengine.com/Resources/files/2013SiggraphPresentationsNotes-26915738.pdf" target="_blank">Real Shading in Unreal Engine 4</a></li>
-      </ul>
-    </main>
+    <div id="overlay"></div>
+    <div id="page-wrapper">
+      <h1>Physically Based Rendering</h1>
+      <main>
+        <canvas>This browser seems not to support canvas. :(</canvas>
+        <section class="inspector">
+          <label class="middle-in-grid-row" for="baseColorValue">Base color</label>
+          <input class="middle-in-grid-row" type="color" id="baseColorValue" value="#FF0000">
+          <label class="middle-in-grid-row" for="roughnessFactor">Roughness</label>
+          <input type="range" id="roughnessFactor" min="0" max="1" step="0.01" value="0.5">
+          <label class="middle-in-grid-row" for="metallicFactor">Metallic</label>
+          <input type="range" id="metallicFactor" min="0" max="1" step="0.01" value="1">
+          <label class="middle-in-grid-row" for="clearCoat">Clear Coat</label>
+          <input type="range" id="clearCoat" min="0" max="1" step="0.01" value="1">
+          <label class="middle-in-grid-row" for="clearCoatIOR">Clear Coat IOR</label>
+          <input type="range" id="clearCoatIOR" min="1.2" max="2.0" step="0.01" value="1.5">
+        </section>
+        <section class="tech-notes">
+          <h2>What is Physically Based Rendering?</h2>
+          <p>
+            Physically Based Rendering, as known as PBR, is a type of real-time rendering
+            technique that creates more realistic images than the traditional ones by
+            simulating how light interacts with the surfaces in the real world. It takes into
+            account the physical properties of objects and light such as how rough or smooth
+            the surface is, how light is reflected from different angles and etc.
+          </p>
+          <h2>What Can I Do With This Demo?</h2>
+          <p>
+            In this demo, you can see how different material properties affect the appearance
+            of the rubber duck model. You can adjust the following properties:
+          </p>
+          <ul>
+            <li>Base Color: The primary color of the duck.</li>
+            <li>Roughness: How smooth or rough the surface appears. Lower values make the surface shiny and reflective.</li>
+            <li>Metallic: How metallic or non-metallic the material is. Set it to higher values to make the duck look like metal, and lower values to make it appear more like plastic.</li>
+            <li>Clear Coat: A thin translucent layer over the material, such as car paints or lacquered wood. Set it to higher values to make the duck glossy.</li>
+            <li>Clear Coat IOR: The degree of bend of a light ray when it passes through the clear coat</li>
+          </ul>
+          <h2>References</h2>
+          <ul>
+            <li><a href="https://google.github.io/filament/Materials.html" target="_blank">Filament Material Guide</li>
+            <li><a href="https://cdn2.unrealengine.com/Resources/files/2013SiggraphPresentationsNotes-26915738.pdf" target="_blank">Real Shading in Unreal Engine 4</a></li>
+          </ul>
+        </section>
+      </main>
+    </div>
   </body>
 </html>

@@ -12,50 +12,55 @@
     <title>Depth Peeling Live Demo</title>
     <script src="/webgl-debug.js"></script>
     
-    <script type="module" crossorigin src="/assets/depthPeeling-6e65ab6b.js"></script>
+    <script type="module" crossorigin src="/assets/depthPeeling-b2844324.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-3cfb730f.js">
     <link rel="modulepreload" crossorigin href="/assets/fullscreen-quad-cddcd807.js">
     <link rel="modulepreload" crossorigin href="/assets/prefiltered-env-map-946f44e6.js">
     <link rel="modulepreload" crossorigin href="/assets/pbr-forward-8429c5c5.js">
     <link rel="modulepreload" crossorigin href="/assets/pbr-forward-depth-peel-d5c5426d.js">
     <link rel="stylesheet" href="/assets/depth-peeling-3f88af5b.css">
-    <link rel="stylesheet" href="/assets/demo-922c1124.css">
+    <link rel="stylesheet" href="/assets/demo-0d4198f6.css">
   </head>
   <body>
-    <h1>Depth Peeling</h1>
-    <main>
-      <div class="comparision-label">
-        <div>Depth Peeling: <strong>Off</strong></div>
-        <div>Depth Peeling: <strong>On</strong></div>
-      </div>
-      <canvas>This browser seems not to support canvas. :(</canvas>
-      <h2>What is Depth Peeling?</h2>
-      <p>
-        Depth Peeling is a method used to render multiple layers of
-        transparency. Unlike simple alpha blending, depth peeling ensures that
-        the overlapping transparent surfaces are accurately visualized and
-        rendered in any order.
-      </p>
-      <ul>
-        <li>Left: Displays the object using traditional transparency techniques.</li>
-        <li>Right: Displays the object using depth peeling.</li>
-      </ul>
-      <p>
-        You can change the view angles by mouse dragging and zoom in and out with mouse wheel.
-      </p>
-      <h2>References</h2>
-      <ul>
-        <li>
-          <a href="https://developer.download.nvidia.com/assets/gamedev/docs/OrderIndependentTransparency.pdf" target="_blank">
-            Order-Independent Transparency
-          </a>
-        </li>
-        <li>
-          <a href="https://developer.download.nvidia.com/SDK/10/opengl/src/dual_depth_peeling/doc/DualDepthPeeling.pdf" target="_blank">
-            Order Independent Transparency With Dual Depth Peeling
-          </a>
-        </li>
-      </ul>
-    </main>
+    <div id="overlay"></div>
+    <div id="page-wrapper">
+      <h1>Depth Peeling</h1>
+      <main>
+        <div class="comparision-label">
+          <div>Depth Peeling: <strong>Off</strong></div>
+          <div>Depth Peeling: <strong>On</strong></div>
+        </div>
+        <canvas>This browser seems not to support canvas. :(</canvas>
+        <section class="tech-notes">
+          <h2>What is Depth Peeling?</h2>
+          <p>
+            Depth Peeling is a method used to render multiple layers of
+            transparency. Unlike simple alpha blending, depth peeling ensures that
+            the overlapping transparent surfaces are accurately visualized and
+            rendered in any order.
+          </p>
+          <ul>
+            <li>Left: Displays the object using traditional transparency techniques.</li>
+            <li>Right: Displays the object using depth peeling.</li>
+          </ul>
+          <p>
+            You can change the view angles by mouse dragging and zoom in and out with mouse wheel.
+          </p>
+          <h2>References</h2>
+          <ul>
+            <li>
+              <a href="https://developer.download.nvidia.com/assets/gamedev/docs/OrderIndependentTransparency.pdf" target="_blank">
+                Order-Independent Transparency
+              </a>
+            </li>
+            <li>
+              <a href="https://developer.download.nvidia.com/SDK/10/opengl/src/dual_depth_peeling/doc/DualDepthPeeling.pdf" target="_blank">
+                Order Independent Transparency With Dual Depth Peeling
+              </a>
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
