@@ -1,0 +1,1 @@
+function o(a){return[parseInt(a.slice(1,3),16)/255,parseInt(a.slice(3,5),16)/255,parseInt(a.slice(5,7),16)/255]}function c(a){const t=Math.pow(a[0],2.2),n=Math.pow(a[1],2.2),s=Math.pow(a[2],2.2);return[t,n,s]}export{o as h,c as s};

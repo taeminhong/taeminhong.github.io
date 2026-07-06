@@ -4,42 +4,52 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="utf-8">
     
-    
     <link rel="icon" type="image/x-icon" href="/assets/favicon-91e72999.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQfnCRYDFwi26VlVAAABJUlEQVRIx+3Svy6DYRTH8c/T90FLMBBaoos7kFgtYm/cgVncgc3AZVgtYiVxBRKuARElMTSNf1F9Da3QhOR9UwmD3/JbnnOe7/mdw79+XwEMmDCUs/LJnVanQcWmFSVpro/vHdpxnSjYsiF6zkkwaUnRUVS2omnNidAdKc3gqUW7lk1HJSMaTl0p4xZTGbwu0TCsGBGk2soOUCOjtzuTFPpf5LxzF6qCiopEksmDqgvn5vsmiF1Pc2eQ/pUM4pdNo1mdg+n1VrYM9s29b7lHBZdWfzyDd4KCuprOqa6K37xuue1S1lUFbaInD2YseBU+zfzddx+ZLBh36TG6cWzdrkZO9jGjjtQTbWcGTBvMVR407NnWDF20CcWcBM/uvPS5gX/9kN4Aja1hlhVtzvsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDktMjJUMDM6MjM6MDgrMDA6MDCFRcOgAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTA5LTIyVDAzOjIzOjA4KzAwOjAw9Bh7HAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABXelRYdFJhdyBwcm9maWxlIHR5cGUgaXB0YwAAeJzj8gwIcVYoKMpPy8xJ5VIAAyMLLmMLEyMTS5MUAxMgRIA0w2QDI7NUIMvY1MjEzMQcxAfLgEigSi4A6hcRdPJCNZUAAAAASUVORK5CYII=">
     <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQfnCRYDFwcmVkTEAAAAg0lEQVQoz7XRsQ3CUAwE0PeT31DCBAixScQAkI4NWIwuE6BIbEEFzEGTTxElBPQlqtw1tnx3tmRmR7BUW0vZ2VNTOjm6S1keLKKtVqvIJHTYFGTjeyRZ5xf+CuJk40432i6DNSKMku7HHoge9pOrh6oClaZ087ISBMWEfX91nu1FH7wBbFchkoxTeGEAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDktMjJUMDM6MjM6MDcrMDA6MDBzDbNJAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTA5LTIyVDAzOjIzOjA3KzAwOjAwAlAL9QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABXelRYdFJhdyBwcm9maWxlIHR5cGUgaXB0YwAAeJzj8gwIcVYoKMpPy8xJ5VIAAyMLLmMLEyMTS5MUAxMgRIA0w2QDI7NUIMvY1MjEzMQcxAfLgEigSi4A6hcRdPJCNZUAAAAASUVORK5CYII=">
     <link rel="mask-icon" href="/assets/safari-pinned-tab-8d93c41f.svg" color="#5bbad5">
-    <title>Skeletal Animation Demo</title>
+    <title>Glass & Light Absorption Live Demo</title>
     <script src="/webgl-debug.js"></script>
     
-    <script type="module" crossorigin src="/assets/animation-d824f737.js"></script>
+    <script type="module" crossorigin src="/assets/attenuation-00979c14.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-3cfb730f.js">
     <link rel="modulepreload" crossorigin href="/assets/fullscreen-quad-ac64eabb.js">
     <link rel="modulepreload" crossorigin href="/assets/prefiltered-env-map-b5c0fb4d.js">
+    <link rel="modulepreload" crossorigin href="/assets/color-c46a20f7.js">
+    <link rel="modulepreload" crossorigin href="/assets/pbr-forward-8429c5c5.js">
     <link rel="modulepreload" crossorigin href="/assets/pbr-forward-depth-peel-d5c5426d.js">
-    <link rel="stylesheet" href="/assets/animation-c6305b6f.css">
     <link rel="stylesheet" href="/assets/demo-0d4198f6.css">
   </head>
   <body>
     <div id="overlay"></div>
     <div id="page-wrapper">
-      <h1>Skeletal Animation</h1>
+      <h1>Glass & Light Absorption</h1>
       <main>
         <canvas>This browser seems not to support canvas. :(</canvas>
-        <section class="animation-controller"></section>
+        <div class="inspector">
+          <label class="middle-in-grid-row" for="attenuationColor">Glass Color</label>
+          <input class="middle-in-grid-row" type="color" id="attenuationColor" value="#ff00d0">
+          <label class="middle-in-grid-row" for="attenuationDistance">Attenuation Distance</label>
+          <input type="range" id="attenuationDistance" min="0.01" max="5.0" step="0.01" value="0.7">
+          <label class="middle-in-grid-row" for="ior">IOR</label>
+          <input type="range" id="ior" min="1.2" max="2.0" step="0.01" value="1.5">
+        </div>
         <section class="tech-notes">
-          <h2>References</h2>
-          <ul>
-            <li>
-              <a href="https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#reference-animation" target="_blank">
-                glTF 2.0 Animation Specification
-              </a>
-            </li>
-          </ul>
-          <h2>Model Information</h2>
+          <h2>Beer-Lambert Attenuation</h2>
           <p>
-            This work is based on <a href="https://sketchfab.com/3d-models/zombie-hazmat-49b3b4307f6a4d2386fdb02354158d04" target="_blank">"Zombie Hazmat"</a> by <a href="https://sketchfab.com/LxNazarov" target="_blank">LxNazarov</a> licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY-4.0</a>.
+            As light travels through a transparent medium, it is absorbed at a rate of the distance traveled. this is described by Beer-Lambert law:
           </p>
+          <pre>attenuation = exp(-absorptionColor * thickness / attenuationDistance)</pre>
+          <p>
+            Thinner regions such as the horns and hair transmit light with less color shift, while the thicker body absorbs more, producing a deeper hue.
+          </p>
+          <h2>What can I do with this demo?</h2>
+          Adjust the following properties to explorer how light interacts with glass:
+          <ul>
+            <li>Glass Color: The color the glass appears when light passes through it. It gets crystal clear when it's white.</li>
+            <li>Attenuation Distance: How quickly the color deepens. Lower values make the glass more opaque</li>
+            <li>IOR(Index of Refraction): How much light bends when entering the glass. Higher values produce stronger distortion</li>
+          </ul>
         </section>
       </main>
     </div>
